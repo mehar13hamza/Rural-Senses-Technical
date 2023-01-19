@@ -1,0 +1,10 @@
+Flask==2.2.2
+pymongo==4.3.3
+Flask-PyMongo==2.3.0
+Flask-JWT-Extended==4.4.4
+flask-core==2.9.0
+Flask-Cors==3.0.10
+pandas==1.5.2
+flask-mongoengine==1.0.0
+flask-swagger-ui==4.11.1
+pytest-flask==1.2.0

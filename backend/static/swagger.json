@@ -1,0 +1,544 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Rural Sense Project API",
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+   "servers": [
+        {
+        "url": "/"
+        }
+    ],
+       "components": {
+         "securitySchemes":{
+           "bearerAuth":{
+             "type": "http",
+             "scheme": "bearer",
+             "bearerFormat": "JWT",
+           }
+         },
+        "schemas": {
+            "user-signin": {
+                "type": "object",
+                "properties": {
+                    "username": {
+                    "type": "string"
+                    },
+                    "password": {
+                    "type": "string"
+                    }
+                }
+            },
+
+
+
+
+          "admin-dashboard": {
+               "type": "object",
+                "properties": {
+
+                }
+            },
+
+
+          "community-dashboard": {
+               "type": "object",
+                "properties": {
+
+                }
+            },
+
+
+          "public-official-dashboard": {
+               "type": "object",
+                "properties": {
+
+                }
+            },
+
+
+          "review-statistics-by-community": {
+               "type": "object",
+                "properties": {
+
+                }
+            },
+
+
+          "public-official-review": {
+               "type": "object",
+                "properties": {
+
+                }
+            },
+
+
+
+          "get-communities": {
+               "type": "object",
+                "properties": {
+
+                }
+            },
+
+
+
+            "add-user-by-admin": {
+                "type": "object",
+                  "properties": {
+                        "username": {
+                        "type": "string"
+                        },
+                        "password": {
+                        "type": "string"
+                        },
+                     "role": {
+                        "type": "string"
+                        }
+                    }
+            },
+
+
+
+          "send-message-by-publicofficial": {
+                "type": "object",
+                "properties": {
+                    "community": {
+                    "type": "string"
+                    },
+                    "message": {
+                    "type": "string"
+                    }
+                }
+            },
+
+
+           "review-message-by-community": {
+               "type": "object",
+                "properties": {
+
+                }
+            },
+
+
+
+          "upload-data-by-community": {
+                "type": "object",
+                "properties": {
+                    "community": {
+                    "type": "string"
+                    },
+                    "community_size": {
+                    "type": "integer"
+                    },
+
+                    "csv_file": {
+                    "type": "file"
+                    }
+                }
+            }
+        }
+    },
+
+
+
+
+
+   "paths": {
+        "/api/user-signin": {
+            "post": {
+            "tags": [
+                "Get API Token"
+            ],
+            "requestBody": {
+            "required": true,
+            "content": {
+                "application/json": {
+                "schema": {
+                    "$ref": "#/components/schemas/user-signin"
+                    }
+                }
+            }
+            },
+            "responses": {
+
+                "200": {
+                    "description": "OK",
+                    "schema": {
+                    "$ref": "#/components/schemas/user-signin"
+                    }
+                },
+                "404": {
+                    "description": "NOT FOUND",
+                    "schema": {
+                    "$ref": "#/components/schemas/user-signin"
+                    }
+            }
+            }
+            },
+        },
+
+
+
+
+
+     "/api/add-user-by-admin": {
+            "post": {
+               "security": [
+           {
+              "bearerAuth": []
+           }
+        ],
+            "tags": [
+                "Add User"
+            ],
+            "requestBody": {
+            "required": true,
+            "content": {
+                "application/json": {
+                "schema": {
+                    "$ref": "#/components/schemas/add-user-by-admin"
+                    }
+                }
+            }
+            },
+            "responses": {
+
+                "200": {
+                    "description": "OK",
+                    "schema": {
+                    "$ref": "#/components/schemas/add-user-by-admin"
+                    }
+                },
+                "404": {
+                    "description": "NOT FOUND",
+                    "schema": {
+                    "$ref": "#/components/schemas/add-user-by-admin"
+                    }
+            }
+            }
+            },
+        },
+
+
+
+
+
+     "/api/upload-data-by-community": {
+            "post": {
+               "security": [
+           {
+              "bearerAuth": []
+           }
+        ],
+            "tags": [
+                "Community Feedback"
+            ],
+            "requestBody": {
+            "required": true,
+            "content": {
+                "multipart/form-data": {
+                "schema": {
+                    "$ref": "#/components/schemas/upload-data-by-community"
+                    }
+                }
+            }
+            },
+            "responses": {
+
+                "200": {
+                    "description": "OK",
+                    "schema": {
+                    "$ref": "#/components/schemas/upload-data-by-community"
+                    }
+                },
+                "404": {
+                    "description": "NOT FOUND",
+                    "schema": {
+                    "$ref": "#/components/schemas/upload-data-by-community"
+                    }
+            }
+            }
+            },
+        },
+
+
+
+
+
+
+
+
+
+
+
+     "/api/admin-dashboard": {
+            "get": {
+              "security": [
+           {
+              "bearerAuth": []
+           }
+        ],
+            "tags": [
+                "Admin Dashboard"
+            ],
+
+            "responses": {
+
+                "200": {
+                   "description": "OK",
+                    "schema": {
+                    "$ref": "#/components/schemas/admin-dashboard"
+                    }
+                },
+                "404": {
+                   "description": "NOT FOUND",
+                    "schema": {
+                    "$ref": "#/components/schemas/admin-dashboard"
+                    }
+            }
+            }
+            },
+        },
+
+
+
+
+     "/api/community-dashboard": {
+            "get": {
+              "security": [
+           {
+              "bearerAuth": []
+           }
+        ],
+            "tags": [
+                "Community Dashboard"
+            ],
+
+            "responses": {
+
+                "200": {
+                   "description": "OK",
+                    "schema": {
+                    "$ref": "#/components/schemas/community-dashboard"
+                    }
+                },
+                "404": {
+                   "description": "NOT FOUND",
+                    "schema": {
+                    "$ref": "#/components/schemas/community-dashboard"
+                    }
+            }
+            }
+            },
+        },
+
+
+
+
+
+
+     "/api/public-official-dashboard": {
+            "get": {
+              "security": [
+           {
+              "bearerAuth": []
+           }
+        ],
+            "tags": [
+                "Public Official Dashboard"
+            ],
+
+            "responses": {
+
+                "200": {
+                   "description": "OK",
+                    "schema": {
+                    "$ref": "#/components/schemas/public-official-dashboard"
+                    }
+                },
+                "404": {
+                   "description": "NOT FOUND",
+                    "schema": {
+                    "$ref": "#/components/schemas/public-official-dashboard"
+                    }
+            }
+            }
+            },
+        },
+
+
+
+
+
+     "/api/review-statistics-by-community": {
+            "get": {
+              "security": [
+           {
+              "bearerAuth": []
+           }
+        ],
+            "tags": [
+                "Review Statistics Community"
+            ],
+
+            "responses": {
+
+                "200": {
+                   "description": "OK",
+                    "schema": {
+                    "$ref": "#/components/schemas/review-statistics-by-community"
+                    }
+                },
+                "404": {
+                   "description": "NOT FOUND",
+                    "schema": {
+                    "$ref": "#/components/schemas/review-statistics-by-community"
+                    }
+            }
+            }
+            },
+        },
+
+
+
+
+
+
+      "/api/public-official-review": {
+            "get": {
+              "security": [
+           {
+              "bearerAuth": []
+           }
+        ],
+            "tags": [
+                "Review Statistics Public"
+            ],
+
+            "responses": {
+
+                "200": {
+                   "description": "OK",
+                    "schema": {
+                    "$ref": "#/components/schemas/public-official-review"
+                    }
+                },
+                "404": {
+                   "description": "NOT FOUND",
+                    "schema": {
+                    "$ref": "#/components/schemas/public-official-review"
+                    }
+            }
+            }
+            },
+      },
+
+
+
+
+
+      "/api/send-message-by-publicofficial": {
+            "post": {
+               "security": [
+           {
+              "bearerAuth": []
+           }
+        ],
+            "tags": [
+                "Send Message"
+            ],
+            "requestBody": {
+            "required": true,
+            "content": {
+                "application/json": {
+                "schema": {
+                    "$ref": "#/components/schemas/send-message-by-publicofficial"
+                    }
+                }
+            }
+            },
+            "responses": {
+
+                "200": {
+                    "description": "OK",
+                    "schema": {
+                    "$ref": "#/components/schemas/send-message-by-publicofficial"
+                    }
+                },
+                "404": {
+                    "description": "NOT FOUND",
+                    "schema": {
+                    "$ref": "#/components/schemas/send-message-by-publicofficial"
+                    }
+            }
+            }
+            },
+        },
+
+
+     "/api/review-message-by-community": {
+            "get": {
+              "security": [
+           {
+              "bearerAuth": []
+           }
+        ],
+            "tags": [
+                "Review Message Community"
+            ],
+
+            "responses": {
+
+                "200": {
+                   "description": "OK",
+                    "schema": {
+                    "$ref": "#/components/schemas/review-message-by-community"
+                    }
+                },
+                "404": {
+                   "description": "NOT FOUND",
+                    "schema": {
+                    "$ref": "#/components/schemas/review-message-by-community"
+                    }
+            }
+            }
+            },
+      },
+
+
+
+     "/api/get-communities": {
+            "get": {
+              "security": [
+           {
+              "bearerAuth": []
+           }
+        ],
+            "tags": [
+                "Fetch Communities"
+            ],
+
+            "responses": {
+
+                "200": {
+                   "description": "OK",
+                    "schema": {
+                    "$ref": "#/components/schemas/get-communities"
+                    }
+                },
+                "404": {
+                   "description": "NOT FOUND",
+                    "schema": {
+                    "$ref": "#/components/schemas/get-communities"
+                    }
+            }
+            }
+            },
+        }
+   }
+}
